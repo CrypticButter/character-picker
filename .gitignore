@@ -1,0 +1,8 @@
+.DS_Store
+/target
+.cpcache
+.lsp/.cache
+.clj-kondo/.cache
+characters.txt
+clj/*.log
+DerivedName.txt

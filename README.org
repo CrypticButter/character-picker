@@ -1,0 +1,77 @@
+#+TITLE: Character Picker for Windows
+
+[[file:doc/images/theta.png]]
+
+A quick & convenient pop-up interface that allows you to search for and type Unicode characters.
+
+* Installation
+
+The ready-made files can be downloaded from the [[releases][releases page]].
+
+The =exe= file must be run in the same folder as the =characters.txt= file.
+
+In order to be useful, you should bind a keyboard shortcut to execute the character
+picker so that you can quickly access it anywhere on demand. For instance, you could
+download [[https://www.autohotkey.com][AutoHotKey]] and create a script (=.ahk= file) that runs on
+system startup.
+
+Here is an example of such a script:
+
+#+BEGIN_SRC
+  ; Runs the program when Ctrl+Win+Space is pressed
+  ; Also see: http://www.autohotkey.com/docs/Hotkeys.htm
+  ; Important to set the working directory to the same folder as the `characters.txt` file
+
+  #^Space::
+    SetWorkingDir c:\Users\luis\mdata\util\character-picker
+    Run "C:\Users\luis\mdata\util\character-picker\picker.exe"
+    Return
+#+END_SRC
+
+After installing AutoHotKey, you can double-click the script file for the shortcuts to
+take effect. Then, you can create a shortcut to this file (Ctrl+Shift+drag) and move it to the =Start-up=
+folder which can be accessed by typing =shell:startup= into the Run box (Windows+R).
+
+* Usage
+
+While the program is open, your keystrokes will be captured by the search box.
+The [[https://github.com/quickwit-inc/tantivy][search]] allows exact matches using double quotes (e.g. ="latin capital"=),
+as well as basic natural query language (e.g. =(greek AND letter) OR "latin capital"=).
+Note that you may need to type in an entire word before getting any matches.
+
+To type a character, you can click on it or press =Enter= to type the selected character.
+
+To change the selection, use the shortcuts =Ctrl+h= (left), =Ctrl+j= (down), =Ctrl+k= (up) and =Ctrl+l= (right).
+
+To close the window, click the cross, press =Escape=, or press =Ctrl+g=.
+
+You can resize the window and scroll the results if needed.
+
+* Configuration
+
+The =characters.txt= has the following format:
+
+- One line per character
+- Each line consists of the character, then a space, then a description
+
+Example:
+#+BEGIN_SRC
+  Δ GREEK CAPITAL LETTER DELTA
+#+END_SRC
+
+These descriptions power the search function, so you can modify the description of a character to make it easier to search for.
+Additionally, you can remove lines with any characters that you do not want to show up, or simply start afresh with a minimal list of useful characters.
+
+* Building from Source
+
+This character picker is a simple Rust program that can be built using =cargo=.
+Note that it depends on a custom version of the =druid= crate found [[https://github.com/LuisThiamNye/druid][here]].
+
+The =characters.txt= file can be generated from the =DerivedName.txt= file which can be [[https://www.unicode.org/Public/14.0.0/ucd/extracted/DerivedName.txt][downloaded]] from the Unicode website.
+Then, execute =extractor/extract_chars.clj= in the same directory using, for instance, [[https://github.com/babashka/babashka][Babashka]].
+
+* License
+
+Copyright © 2021 Luis Thiam-Nye.
+
+Distributed under Eclipse Public License 2.0, see [[LICENSE][LICENSE]].

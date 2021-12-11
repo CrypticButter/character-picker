@@ -1,0 +1,34 @@
+;;
+{:paths ["bb"]
+
+ :deps {borkdude/rewrite-edn {:mvn/version "0.1.0"}}
+
+ :tasks {:requires ([babashka.fs :as fs]
+                    [clojure.edn :as edn]
+                    #_[tasks :as t]
+                    #_[tasks.plan.web :as plan])
+
+         ;; :init (def plan.-default-builds [:plan])
+
+         rund (clojure (str "-M"
+                           ":dev"
+                           ":inspect/portal-cli"
+                           ":inspect/reveal-light"
+                           ":inspect/rebl"
+                           ":lib/hotload"
+                           ;; ":test"
+                           ":windows"
+                           ":middleware/cider-clj"))
+
+         run (clojure (str "-M"
+                           ":inspect/portal-cli"
+                           ":inspect/reveal-light"
+                           ":inspect/rebl"
+                           ":lib/hotload"
+                           ;; ":test"
+                           ":windows"
+                           ":dev"
+                           ))
+
+         ;;
+         }}

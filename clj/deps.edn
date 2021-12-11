@@ -1,0 +1,13 @@
+;;
+{:paths ["src"]
+
+ :deps {io.github.humbleui.jwm/jwm {:mvn/version "0.2.6"}
+        org.suskalo/coffi {:mvn/version "0.2.277"}
+        io.github.humbleui.humbleui/humbleui {:git/url "https://github.com/HumbleUI/HumbleUI"
+                                              :git/sha "b5bca9f9923196adebcca9be1ca43965ca7b461d"}}
+
+ :aliases
+ {:dev {:main-opts ["-m" "picker.debug"]
+        :jvm-opts ["--add-modules=jdk.incubator.foreign" "--enable-native-access=ALL-UNNAMED"]}
+  :windows
+  {:extra-deps {io.github.humbleui.skija/skija-windows {:mvn/version "0.96.0"}}}}}
