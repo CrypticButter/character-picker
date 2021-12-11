@@ -36,7 +36,7 @@ folder which can be accessed by typing =shell:startup= into the Run box (Windows
 
 While the program is open, your keystrokes will be captured by the search box.
 The [[https://github.com/quickwit-inc/tantivy][search]] allows exact matches using double quotes (e.g. ="latin capital"=),
-as well as basic natural query language (e.g. =(greek AND letter) OR "latin capital"=).
+as well as basic natural query language (example:   (greek AND letter) OR "latin capital"   ).
 Note that you may need to type in an entire word before getting any matches.
 
 To type a character, you can click on it or press =Enter= to type the selected character.
